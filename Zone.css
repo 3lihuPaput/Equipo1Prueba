@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,300;1,600&family=Rubik+Burned&display=swap');
+/*este codigo es el que trae los iconos a la pagina*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {    /* este sirve para para los fondos y colores de la pagina*/
+    
+    --sidebar-color: white;
+    --primary-color: grey;
+    --primary-color-light:#9c27800D;
+    --background-image-dark: url('https://images8.alphacoders.com/354/thumb-1920-354232.jpg');
+    --toggle-color: blue;
+    --text-color: grey;
+
+    --tran-03: all 0.2s ease;    
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.4s ease;
+    /*Cada una de estas variables define una transición CSS con diferentes duraciones y un tipo de easing (suavizado):
+
+--tran-03: Define una transición que afecta a todas las propiedades (all), con una duración de 0.2 segundos y un suavizado ease.
+--tran-04: Define una transición similar, pero con una duración de 0.3 segundos.
+--tran-05: Define una transición con una duración de 0.4 segundos.*/
+}
+
+body {
+    min-height: 100vh;
+  
+    background-image: url('https://images5.alphacoders.com/350/thumb-1920-350025.jpg');
+    transition: var(--tran-05);
+}
+
+::selection {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+body.dark {  /*este se encarga del fondo oscuro*/
+    --body-color:#18191a;
+    --sidebar-color:#242526;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: white;
+    --text-color: #cccccc;
+    background-image: var(--background-image-dark); /* Cambiar la imagen de fondo en modo oscuro */
+    transition: var(--tran-05);
+}
+
+.sidebar { /* se encarga del fondo del menu*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;
+}
+.sidebar.close{/*se encarga de cuanto se cierra el menu*/
+    width: 88px;
+}
+
+.sidebar li { 
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebar header .image,
+.sidebar .icon { /* se encarga el diseño de los iconos*/
+    min-width: 60px;
+    border-radius: 6px;
+    
+}
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+.sidebar .text,
+.sidebar .icon { /* se encarga el diseño de texto del menu*/
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.sidebar .text {
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+.sidebar.close .text{
+    opacity: 0;
+}
+.sidebar header{
+    position: relative;
+}
+
+.sidebar header .logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.profe { /*es una clase que hace un bloque del menu, si le mueves no afecta casi nada por que tiene otras propiedades*/
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+.sidebar header .image{/*es el header que expande el menu*/
+    display: flex;
+    align-items: center;
+    justify-self: center;
+
+}
+
+.sidebar header .image img {
+    width: 40px;
+    border-radius: 6px;
+}
+
+.sidebar header .toggle {
+    position: absolute;
+    top: 20%;
+    right: 0px;
+    height: 35px;
+    width: 35px;
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+body.dark .sidebar header .toggle {
+    color: var(--text-color);
+}
+
+.sidebar.close .toggle {
+    width: 100%;
+    top: 20%;
+}
+
+.sidebar .menu {
+    margin-top: 40px;
+}
+
+.sidebar li.search-box {/*este es el buscador del menu*/
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+.sidebar li.search-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: var(--tran-05);
+}
+
+.sidebar li  a { /* esta afecta las etiquetas de los broques e iconos del menu}*/
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+.sidebar li a:hover {
+    background-color: var(--primary-color);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text {
+    color: var(--sidebar-color);
+}
+
+.sidebar .menu-bar {
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+
+.menu-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar  .menu-bar .mode { /*afecta el boton del oscuro*/
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    position: relative;
+    transition: var(--tran-05);
+}
+
+.menu-bar .mode .sun-moon  {
+    height: 50px;
+    width: 60px;
+}
+
+.mode .sun-moon i {
+    position: absolute;
+}
+
+.mode .sun-moon i.sun {
+    opacity: 0;
+}
+
+body.dark .mode .sun-moon i.sun {
+    opacity: 1;
+}
+
+body.dark .mode .sun-moon i.moon {
+    opacity: 0;
+}
+
+.menu-bar .bottom-content .toggle-switch {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.toggle-switch .switch {
+    position: relative;
+    height: 22px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: var(--toggle-color);
+    transition: var(--tran-05);
+}
+
+.switch::before {
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+
+body.dark .switch::before {
+    left: 20px;
+}
+
+.home {/*afecta el home, donde pones el relleno nde la pagina es un block con fondo blanco*/
+    position: absolute;
+    top: 0;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+   
+    transition: var(--tran-05);
+}
+
+
+.home .text {
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 12px 60px;
+}
+
+.sidebar.close ~ .home {
+    left: 78px;
+    height: 100vh;
+    width: calc(100% - 78px);
+}
+
+body.dark .home .text {
+    color: var(--text-color);
+}
+
+
+
+
+
+
+ /* de abajo son diseño de pagina y arriba el menu*/
+
+ .imagen_izquierda_dentro_texto
+ {
+     width: 200px;
+     float: left;
+     background-color: white;
+     border-radius: 10px;
+     text-align: center;
+     padding: 10px;
+     margin: 10px;
+     
+ }
+
+
+.imagen_derecha_dentro_texto {
+width: 30%;
+height: 200px;
+}
+
+.fondo_blanco {
+color: black;
+background-color: hsl(0, 0%, 100%, 0.7);
+padding: 30px;
+border-radius: 15px;
+margin: 30px;
+font-family: calibri;
+
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+
+}
+
+.imagen_derecha_dentro_texto img {/*es una clase que afecta el texto al lado de una imagen, se puede usar llamandola*/
+width: 80%;
+border-radius: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+
+
+
+} 
+
+
+.margin_p{
+
+display: flex;
+justify-content: center;
+
+
+
+}
+
+
+.izq {/*es una clase que afecta las imagenes para ponerla a la izq*/
+width: 70%;
+overflow: hidden
+
+
+}
+
+.imagen_centrada {/*afecta a la imagenes, es una clase*/
+
+display: inline-block;
+margin-left: auto;
+margin-right: auto;
+border: 15px solid black;
+border-radius: 100%;
+
+}
+
+.muchas > img { /* esta es una clase que afecta a las imagenes para no perder resolucion al momento de disminuir la pagnina.*/
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    box-shadow: inset;
+    }
+    .muchas{
+    display: grid;
+    grid-template-columns: 
+    repeat(
+     auto-fit,
+     minmax(150px, 2fr)
+    );
+    gap: 30px;
+    }
+
+ 
