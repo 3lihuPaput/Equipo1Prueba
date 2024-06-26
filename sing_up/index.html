@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" type="image/x-icon" href="imagenes/WhatsApp Image 2024-06-25 at 3.14.43 PM (1).jpeg">
+    <link rel="stylesheet" href="stylesformproyecto.css">
+    <title>REGISTRO</title>
+   <title>Registro</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   <main>
+      <form action="">
+         <div class="leftside">
+            <label class="logo" ></label>
+            <label class="sesions">REGISTRO</label>
+            <br>
+            <label class="ejemplodireccion">Ir a ejemplo</label>
+         </div>
+         <div class="rightside">
+            <label>Nombre:</label>
+            <input type="text" name="nombre" required>
+            <label>Apellidos:</label>
+            <input type="text" name="apellidos" required>
+            <label>Correo:</label>
+            <input type="email" name="correo" required>
+            <label>Contraseña:</label>
+            <input type="password" name="contrasena" id="contrasena" required>
+            <label>Verificar Contraseña:</label>
+            <input type="password" name="verificar_contrasena" id="verificar_contrasena" required>
+            <div class="credenciales">¿Ya tienes cuenta? inicia secion!!</div>
+            <div class="buttons">
+               <button type="submit" class="cuenta">Inicia Secion</button>
+               <button type="button" class="siguiente">Siguiente</button>
+            </div>
+         </div>
+      </form>
+      <div class="menuayuda">
+         <button>Ayuda</button>
+         <button>Privacidad</button>
+         <button>Términos</button>
+      </div>
+   </main>
+
+   <script>
+      const form = document.querySelector('form');
+      form.addEventListener('submit', function(event) {
+         const contrasena = document.getElementById('contrasena').value;
+         const verificarContrasena = document.getElementById('verificar_contrasena').value;
+         if (contrasena !== verificarContrasena) {
+            event.preventDefault();
+            alert('Las contraseñas no coinciden. Por favor, verifica e inténtalo de nuevo.');
+         }
+      });
+   </script>
+</body>
+
+</html>
